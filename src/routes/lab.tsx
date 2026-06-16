@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { TopBar } from "@/components/TopBar";
 import { ControlsPanel } from "@/components/lab/ControlsPanel";
@@ -67,7 +67,6 @@ function applyQuickAction(actionId: string, settings: HarnessSettings): { next: 
 }
 
 function LabPage() {
-  const navigate = useNavigate();
   const search = Route.useSearch();
   const { state, update, undo, redo, reset, loadPreset, canUndo, canRedo } = useLabState();
   const loadedFromSearch = useRef<string | null>(null);
