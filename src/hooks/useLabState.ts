@@ -42,19 +42,24 @@ export function presetToState(preset: Preset, variant: HarnessVariant = "robust"
   };
 }
 
-export function useLabState() {
+export function useLabState(initialPresetId?: string | null) {
   const [state, setStateRaw] = useState<LabState>(DEFAULT_STATE);
   const [history, setHistory] = useState<HistoryStore>({ past: [], future: [] });
   const hydrated = useRef(false);
 
   // hydrate
   useEffect(() => {
-    const saved = readLS<LabState | null>(LS_KEYS.labState, null);
+    if (hydrated.current) return;
+    if (initialPresetId && PRESETS_BY_ID[initialPresetId]) {
+      setStateRaw(presetToState(PRESETS_BY_ID[initialPresetId], "robust"));
+    } else {
+      const saved = readLS<LabState | null>(LS_KEYS.labState, null);
+      if (saved) setStateRaw(saved);
+    }
     const hist = readLS<HistoryStore>(LS_KEYS.history, { past: [], future: [] });
-    if (saved) setStateRaw(saved);
     setHistory(hist);
     hydrated.current = true;
-  }, []);
+  }, [initialPresetId]);
 
   // persist
   useEffect(() => {
