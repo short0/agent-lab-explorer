@@ -90,6 +90,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
+      { name: "twitter:title", content: "Agent Harness Lab" },
+      { name: "description", content: "Explore AI agent harnesses with a responsive web sandbox and learning tool." },
+      { property: "og:description", content: "Explore AI agent harnesses with a responsive web sandbox and learning tool." },
+      { name: "twitter:description", content: "Explore AI agent harnesses with a responsive web sandbox and learning tool." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/da9112ec-d5ba-4af7-b18e-f0515637598b/id-preview-b938a159--87d397d6-5edb-495b-b3c3-100a5fbe1ff5.lovable.app-1781664660917.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/da9112ec-d5ba-4af7-b18e-f0515637598b/id-preview-b938a159--87d397d6-5edb-495b-b3c3-100a5fbe1ff5.lovable.app-1781664660917.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
