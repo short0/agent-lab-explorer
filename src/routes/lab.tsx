@@ -68,10 +68,10 @@ function applyQuickAction(actionId: string, settings: HarnessSettings): { next: 
 
 function LabPage() {
   const search = Route.useSearch();
-  const { state, update, undo, redo, reset, loadPreset, canUndo, canRedo } = useLabState();
-  const loadedFromSearch = useRef<string | null>(null);
+  const { state, update, undo, redo, reset, loadPreset, canUndo, canRedo } = useLabState(search.preset ?? null);
+  const loadedFromSearch = useRef<string | null>(search.preset ?? null);
 
-  // Load preset from search param once
+  // Allow subsequent URL changes (e.g. clicking another preset link) to re-load
   useEffect(() => {
     if (search.preset && search.preset !== loadedFromSearch.current && PRESETS_BY_ID[search.preset]) {
       loadedFromSearch.current = search.preset;
